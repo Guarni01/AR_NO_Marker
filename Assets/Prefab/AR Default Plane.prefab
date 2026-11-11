@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6922022408918815630}
   - component: {fileID: 7778890823212511327}
   - component: {fileID: 6306541109465515748}
+  - component: {fileID: 1710791271530071954}
   m_Layer: 0
   m_Name: AR Default Plane
   m_TagString: Untagged
@@ -120,7 +121,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1a110d32af21aa4d872c707dfcc6043, type: 2}
+  - {fileID: 2100000, guid: f1a5b741adbebd44e87bf84447f97517, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,3 +255,17 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1710791271530071954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8155653991371547156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accbbdd91890a7f4792636d72a3f2475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneVisibilityBH
+  MyMeshRenderer: {fileID: 7778890823212511327}
+  MyLineRenderer: {fileID: 6306541109465515748}
