@@ -23,4 +23,13 @@ public class Bag : MonoBehaviour
         SpawnManager.Singleton.OnBagCollected(this);
         Destroy(gameObject);
     }
+    
+    public void Collect()
+    {
+        if (collected) return;
+
+        collected = true;
+        SpawnManager.Singleton.OnBagCollected(this);
+        Destroy(gameObject);
+    }
 }

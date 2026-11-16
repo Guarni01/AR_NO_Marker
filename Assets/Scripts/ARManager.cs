@@ -74,6 +74,8 @@ public class ARManager : MonoBehaviour
     }
 
     public void SetFloorPlane(PlaneVisibilityBH floor) => FloorPlane = floor;
+
+    
 }
 
 

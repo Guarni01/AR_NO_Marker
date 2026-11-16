@@ -74,6 +74,11 @@ public class CalibrationMinigame : MonoBehaviour
         ARManager.Singleton.SetFloorPlane(floor);
         dirtGroup.gameObject.SetActive(false);
         Debug.Log($"Room calibration complete. Floor area: {CurrentFloorArea:F2} m2.");
+        // [AGGIUNTO] Mostra il bottone Start
+        if (StartButtonUI.Singleton != null)
+        {
+            StartButtonUI.Singleton.OnCalibrationFinished();
+        }
     }
 
     private void CreatePlaceholderUI()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -7,7 +6,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Singleton;
 
     [Header("UI")]
-    public Button StartButton;
     public TMP_Text TimerText; // opzionale
 
     [Header("Impostazioni")]
@@ -16,6 +14,9 @@ public class GameManager : MonoBehaviour
     private bool isPlaying;
     private bool timerRunning;
     private float timeLeft;
+
+    // Sola lettura: true da quando premi Start fino a fine countdown (usato da ResultUI)
+    public bool IsPlaying => isPlaying;
 
     private void Awake()
     {
@@ -30,11 +31,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (StartButton != null)
-        {
-            StartButton.onClick.AddListener(StartGame);
-        }
-
         UpdateTimerText();
     }
 
@@ -51,18 +47,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Chiamato dal bottone Start
+    // Chiamato da StartButtonUI quando premi il bottone
     public void StartGame()
     {
         if (isPlaying) return;
 
         isPlaying = true;
-
-        if (StartButton != null)
-        {
-            StartButton.gameObject.SetActive(false);
-        }
-
         SpawnManager.Singleton.StartInitialSpawn();
     }
 
@@ -72,7 +62,7 @@ public class GameManager : MonoBehaviour
         timeLeft = GameDuration;
         timerRunning = true;
 
-        SpawnManager.Singleton.StartTimedSpawning();
+        SpawnManager.Singleton.StartTimedSpawning(GameDuration);
     }
 
     public void EndGame()
@@ -84,9 +74,10 @@ public class GameManager : MonoBehaviour
 
         SpawnManager.Singleton.StopSpawning();
 
-        if (StartButton != null)
+        // Rimostra il bottone per poter rigiocare
+        if (StartButtonUI.Singleton != null)
         {
-            StartButton.gameObject.SetActive(true);
+            StartButtonUI.Singleton.OnCalibrationFinished();
         }
 
         Debug.Log("Game Over");
