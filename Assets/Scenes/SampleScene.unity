@@ -584,6 +584,7 @@ GameObject:
   - component: {fileID: 1823956994}
   - component: {fileID: 1823956993}
   - component: {fileID: 1823956999}
+  - component: {fileID: 1823957000}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -860,6 +861,27 @@ MonoBehaviour:
   m_EnvironmentDepthMode: 1
   m_EnvironmentDepthTemporalSmoothing: 1
   m_OcclusionPreferenceMode: 0
+--- !u!114 &1823957000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823956991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4db9277fcd46f3b347d3a57c6a9fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeldBroom
+  BroomPrefab: {fileID: 375637290662446310, guid: f4ba4afd7a907264a90257d213469144, type: 3}
+  LocalPosition: {x: 0.26, y: -1.37, z: 1.36}
+  LocalRotation: {x: 1.07, y: -334, z: -4.8}
+  LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  IgnoreCameraPitch: 1
+  IdleBobDistance: 0.015
+  IdleBobSpeed: 1.8
+  SwingDuration: 0.18
+  SwingRotation: {x: -28, y: 8, z: -12}
 --- !u!1 &1985113985
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1985113987}
   - component: {fileID: 1985113986}
+  - component: {fileID: 1985113988}
   m_Layer: 0
   m_Name: ARManager
   m_TagString: Untagged
@@ -890,10 +913,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARManager
   MainCamera: {fileID: 1823956998}
-  PrefabToInstantiate: {fileID: 6231725038586101510, guid: 813c70174062faf428cb128d569c7da6, type: 3}
   ShowPlanes: 1
   CreatedPlanes: []
-  FloorPlane: {fileID: 1710791271530071954, guid: b41674711d57a094c93eada94d3f8e25, type: 3}
+  Calibration: {fileID: 0}
 --- !u!4 &1985113987
 Transform:
   m_ObjectHideFlags: 0
@@ -909,6 +931,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985113988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985113985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edc419b2e2e42acbc70e60774988cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CalibrationMinigame
+  MinimumScanSeconds: 8
+  MinimumFloorArea: 2.5
+  ScanningMessage: Cammina nella stanza per analizzarla...
+  MaximumDirtOpacity: 0.72
+  ShowPlaneVisibility: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,84 +1,79 @@
-using UnityEngine;
 using System.Collections.Generic;
-using NUnit.Framework;
+using UnityEngine;
 
 
+[RequireComponent(typeof(CalibrationMinigame))]
 public class ARManager : MonoBehaviour
 {
-    public static ARManager Singleton;
+    public static ARManager Singleton { get; private set; }
+
+    [Header("AR references")]
     public Camera MainCamera;
-    public GameObject PrefabToInstantiate;
     public bool ShowPlanes = true;
     public List<PlaneVisibilityBH> CreatedPlanes = new List<PlaneVisibilityBH>();
-    public PlaneVisibilityBH FloorPlane;
+    public PlaneVisibilityBH FloorPlane { get; private set; }
 
-    private void OnEnable()
+    [Header("Calibration")]
+    public CalibrationMinigame Calibration;
+
+    private void Awake()
     {
-        if (Singleton != null) //posso usare anche: Singleton = this
+        if (Singleton != null && Singleton != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
+            return;
         }
 
         Singleton = this;
+
+        if (Calibration == null)
+            Calibration = GetComponent<CalibrationMinigame>();
+        if (Calibration == null)
+            Calibration = gameObject.AddComponent<CalibrationMinigame>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public bool TryFindFloor(float minimumArea, out PlaneVisibilityBH floor, out float area)
     {
+        floor = null;
+        area = 0f;
+        float lowestHeight = float.MaxValue;
+        PlaneVisibilityBH largestPlane = null;
+        float largestArea = 0f;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    RaycastHit hit;
-        //    Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
-
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        Instantiate(PrefabToInstantiate, hit.point, Quaternion.identity);
-        //    }
-        //}
-
-        if (Input.GetMouseButtonDown(0))
+        for (int i = CreatedPlanes.Count - 1; i >= 0; i--)
         {
-            
-            FloorPlane = null;
+            PlaneVisibilityBH candidate = CreatedPlanes[i];
+            if (candidate == null || !candidate.IsHorizontal)
+                continue;
 
-            float minPlaneHeight = float.MaxValue;
-
-            for (int i = 0; i < CreatedPlanes.Count; i++)
+            float candidateArea = candidate.SurfaceArea;
+            if (candidateArea > largestArea)
             {
-                if (CreatedPlanes[i].transform.position.y < minPlaneHeight)
-                {
-                    minPlaneHeight = CreatedPlanes[i].transform.position.y;
-                    FloorPlane = CreatedPlanes[i];
-                }
-            
-            
-             FloorPlane.GetComponent<Renderer>().material.color = Color.red;
+                largestArea = candidateArea;
+                largestPlane = candidate;
             }
+
+            if (candidateArea < minimumArea)
+                continue;
+
+            if (candidate.transform.position.y >= lowestHeight)
+                continue;
+
+            lowestHeight = candidate.transform.position.y;
+            floor = candidate;
+            area = candidateArea;
         }
+
+        if (floor != null)
+            return true;
+
+        // While scanning, expose the largest partial horizontal plane for UI feedback.
+        floor = largestPlane;
+        area = largestArea;
+        return false;
     }
 
-    void TouchObjectPositioning() //utilizzo del tocco su touchscreen
-    {
-        if (Input.touchCount > 0)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                RaycastHit hit;
-                Ray ray = MainCamera.ScreenPointToRay(Input.GetTouch(0).position);
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Instantiate(PrefabToInstantiate, hit.point, Quaternion.identity);
-                }
-            }
-        }
-    }
+    public void SetFloorPlane(PlaneVisibilityBH floor) => FloorPlane = floor;
 }
 
 
