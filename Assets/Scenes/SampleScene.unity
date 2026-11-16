@@ -574,7 +574,7 @@ MonoBehaviour:
   ButtonSize: {x: 500, y: 150}
   BottomMargin: 150
   FontSize: 60
-  ButtonColor: {r: 0.6, g: 0.59337395, b: 0.101960786, a: 1}
+  ButtonColor: {r: 0.2757717, g: 0.6, b: 0.101960786, a: 1}
   AutoShowWhenPlanesFound: 0
   MinPlanesForCalibration: 1
 --- !u!4 &984146649
@@ -727,13 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4713ba713d8fba4d8677ec41d17f0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultUI
-  WinText: YOU WIN
-  LoseText: YOU LOSE
   TrashTag: Trash
-  FontSize: 120
-  WinColor: {r: 0.28654003, g: 0.6792453, b: 0.25845486, a: 1}
-  LoseColor: {r: 0.95, g: 0.2, b: 0.2, a: 1}
-  TopMargin: 400
 --- !u!4 &1618776285
 Transform:
   m_ObjectHideFlags: 0
