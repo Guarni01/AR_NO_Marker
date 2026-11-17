@@ -3,6 +3,10 @@ using UnityEngine;
 // A fine countdown scrive in Console se hai vinto o perso (nessuna UI)
 public class ResultUI : MonoBehaviour
 {
+/*    [Header("UI risultato")]
+public GameObject WinCanvas;
+public GameObject LoseCanvas;*/
+
     public string TrashTag = "Trash"; // tag dei sacchetti
 
     private bool wasPlaying;
@@ -21,10 +25,12 @@ public class ResultUI : MonoBehaviour
             if (trashLeft == 0)
             {
                 Debug.Log("YOU WIN - nessun sacchetto rimasto");
+                //if (WinCanvas != null) WinCanvas.SetActive(true);
             }
             else
             {
                 Debug.Log("YOU LOSE - sacchetti rimasti: " + trashLeft);
+                ///*if (LoseCanvas != null) LoseCanvas.SetActive(true);
             }
         }
 

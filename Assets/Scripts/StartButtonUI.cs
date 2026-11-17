@@ -7,6 +7,9 @@ public class StartButtonUI : MonoBehaviour
 {
     public static StartButtonUI Singleton;
 
+    [Header("UI esistente")]
+    public GameObject CanvasButton;
+
     [Header("Aspetto bottone")]
     public string ButtonLabel = "START";
     public Vector2 ButtonSize = new Vector2(500f, 150f);
@@ -33,7 +36,10 @@ public class StartButtonUI : MonoBehaviour
         Singleton = this;
 
         CreateEventSystemIfMissing();
-        BuildButton();
+        //BuildButton();
+        buttonObject = CanvasButton;
+        buttonObject.GetComponent<Button>().onClick.AddListener(OnStartClicked);
+        
         buttonObject.SetActive(false); // nascosto finché la calibrazione non è finita
     }
 
@@ -77,7 +83,7 @@ public class StartButtonUI : MonoBehaviour
 
     // ---------- Creazione UI da codice ----------
 
-    private void BuildButton()
+    /*private void BuildButton()
     {
         // Canvas
         GameObject canvasObject = new GameObject("StartCanvas");
@@ -126,7 +132,7 @@ public class StartButtonUI : MonoBehaviour
         label.fontSize = FontSize;
         label.alignment = TextAlignmentOptions.Center;
         label.color = Color.white;
-    }
+    }*/
 
     private void CreateEventSystemIfMissing()
     {

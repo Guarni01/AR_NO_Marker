@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Trash
+  - Timer
   layers:
   - Default
   - TransparentFX
