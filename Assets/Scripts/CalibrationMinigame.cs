@@ -12,6 +12,10 @@ public class CalibrationMinigame : MonoBehaviour
     [TextArea] public string ScanningMessage = "Cammina nella stanza per analizzarla...";
     [Range(0f, 1f)] public float MaximumDirtOpacity = 0.72f;
 
+    [Header("Dirt Overlay")]
+    [Tooltip("PNG dello sporco da mostrare durante la calibrazione. Importalo come Sprite (2D and UI).")]
+    public Sprite DirtSprite;
+
     [Header("Debug")]
     [Tooltip("Mostra le mesh e i bordi dei piani AR durante il Play Mode.")]
     public bool ShowPlaneVisibility;
@@ -95,6 +99,11 @@ public class CalibrationMinigame : MonoBehaviour
         dirtGroup = canvasObject.AddComponent<CanvasGroup>();
         dirtGroup.blocksRaycasts = false;
         Image background = CreateImage("Dirt Overlay", canvasObject.transform, new Color(0.18f, 0.12f, 0.06f, 1f));
+        if (DirtSprite != null)
+        {
+            background.sprite = DirtSprite;
+            background.color = Color.white;
+        }
         Stretch(background.rectTransform);
 
         for (int i = 0; i < 12; i++)

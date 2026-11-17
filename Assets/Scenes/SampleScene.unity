@@ -1957,8 +1957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4713ba713d8fba4d8677ec41d17f0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultUI
-  WinCanvas: {fileID: 1683529973}
-  LoseCanvas: {fileID: 240591641}
   TrashTag: Trash
 --- !u!4 &1618776285
 Transform:
@@ -2665,6 +2663,7 @@ MonoBehaviour:
   MinimumFloorArea: 2.5
   ScanningMessage: Cammina nella stanza per analizzarla...
   MaximumDirtOpacity: 0.72
+  DirtSprite: {fileID: -82617365, guid: 5902fecc4d0edbd43b02b9ffbe425341, type: 3}
   ShowPlaneVisibility: 0
 --- !u!1 &2141939520
 GameObject:

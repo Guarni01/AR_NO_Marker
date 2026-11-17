@@ -6795,6 +6795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bag
   PlayerTag: Player
   AreaCollider: {fileID: 5509352850108756904}
+  destroyEffect: {fileID: 1215688934577624106, guid: 412e498c519fd5f4792cdef58934b185, type: 3}
 --- !u!136 &5509352850108756904
 CapsuleCollider:
   m_ObjectHideFlags: 0
