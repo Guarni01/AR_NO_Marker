@@ -1269,7 +1269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   TimerText: {fileID: 2141939522}
-  GameDuration: 15
+  GameDuration: 60
 --- !u!4 &907951169
 Transform:
   m_ObjectHideFlags: 0
