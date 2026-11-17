@@ -1269,7 +1269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   TimerText: {fileID: 2141939522}
-  GameDuration: 60
+  GameDuration: 15
 --- !u!4 &907951169
 Transform:
   m_ObjectHideFlags: 0
@@ -1957,6 +1957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4713ba713d8fba4d8677ec41d17f0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultUI
+  WinCanvas: {fileID: 1683529973}
+  LoseCanvas: {fileID: 240591641}
+  TrashLeftText: {fileID: 4830750}
   TrashTag: Trash
 --- !u!4 &1618776285
 Transform:
@@ -2724,8 +2727,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: time
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18d14b23bd4d5b64eb5c4afb7a4e64c9, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 18d14b23bd4d5b64eb5c4afb7a4e64c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
