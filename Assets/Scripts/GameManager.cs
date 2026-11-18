@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Singleton;
 
     [Header("UI")]
-    public TMP_Text TimerText; // opzionale
+    public TMP_Text TimerText;
 
     [Header("Impostazioni")]
     public float GameDuration = 120f; // 2 minuti
